@@ -1,0 +1,15 @@
+Package: pegax
+Title: Stuff and Things
+Description: Stuff and Things.
+Version: 0.0.1.9100
+Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"), email =
+    "myrmecocystus+r@gmail.com")
+License: MIT + file LICENSE
+URL: https://github.com/ropenscilabs/pegax
+BugReports: https://github.com/ropenscilabs/pegax/issues
+LazyData: true
+Roxygen: list(markdown = TRUE)
+Imports: Rcpp, piton
+LinkingTo: Rcpp
+RoxygenNote: 6.0.1
+SystemRequirements: C++11

@@ -1,0 +1,12 @@
+pegax
+=====
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE
+)
+```
+
+[![Build Status](https://travis-ci.org/ropenscilabs/pegax.svg?branch=master)](https://travis-ci.org/ropenscilabs/pegax)
