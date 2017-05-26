@@ -10,6 +10,6 @@ BugReports: https://github.com/ropenscilabs/pegax/issues
 LazyData: true
 Roxygen: list(markdown = TRUE)
 Imports: Rcpp, piton
-LinkingTo: Rcpp
+LinkingTo: Rcpp, piton
 RoxygenNote: 6.0.1
 SystemRequirements: C++11
