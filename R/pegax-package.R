@@ -1,6 +1,6 @@
 #' PEG for taxonomy
 #' 
-#' @useDynLib Rcpp
+#' @useDynLib pegax
 #' @name pegax-package
 #' @aliases pegax
 #' @docType package

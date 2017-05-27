@@ -4,21 +4,22 @@ using namespace Rcpp;
 // [[Rcpp::depends(piton)]]
 #include <pegtl.hpp>
 
-namespace pegtl = tao::pegtl;
+using namespace tao::TAOCPP_PEGTL_NAMESPACE;
+// using namespace pegtl = tao::pegtl;
 
 namespace hello
 {
    // Parsing rule that matches a literal "Hello, ".
 
    struct prefix
-      : pegtl::string< 'H', 'e', 'l', 'l', 'o', ',', ' ' >
+      : string< 'H', 'e', 'l', 'l', 'o', ',', ' ' >
    {};
 
    // Parsing rule that matches a non-empty sequence of
    // alphabetic ascii-characters with greedy-matching.
 
    struct name
-      : pegtl::plus< pegtl::alpha >
+      : plus< alpha >
    {};
 
    // Parsing rule that matches a sequence of the 'prefix'
@@ -27,7 +28,7 @@ namespace hello
    // on failure.
 
    struct grammar
-      : pegtl::must< prefix, name, pegtl::one< '!' >, pegtl::eof >
+      : must< prefix, name, one< '!' >, eof >
    {};
 
    // Class template for user-defined actions that does
@@ -35,7 +36,7 @@ namespace hello
 
    template< typename Rule >
    struct action
-      : pegtl::nothing< Rule >
+      : nothing< Rule >
    {};
 
    // Specialisation of the user-defined action to do
@@ -46,9 +47,9 @@ namespace hello
    struct action< name >
    {
       template< typename Input >
-      static void apply( const Input& x, std::string& v )
+      static void apply( const Input& in, std::string& v )
       {
-         v = x.string();
+         v = in.string();
       }
    };
 
@@ -56,12 +57,14 @@ namespace hello
 
 
 //[[Rcpp::export]]
-std::string hell_world(std::string x){
+std::string hello_world(std::string x){
+  
+  memory_input<> din(x, "moot");
 
   std::string name;
-  
-  pegtl::parse< hello::grammar, hello::action >( x, name );
-  
+
+  parse< hello::grammar, hello::action >( din, name );
+
   std::string out = "Good bye, " + name + "!";
 
   return out;

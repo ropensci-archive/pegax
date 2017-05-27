@@ -5,6 +5,28 @@
 
 using namespace Rcpp;
 
+// authority_year
+std::string authority_year(std::string x);
+RcppExport SEXP pegax_authority_year(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(authority_year(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// authority_name
+std::string authority_name(std::string x);
+RcppExport SEXP pegax_authority_name(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(authority_name(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 // peg_sum
 NumericVector peg_sum(CharacterVector x);
 RcppExport SEXP pegax_peg_sum(SEXP xSEXP) {
@@ -16,25 +38,14 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// hell_world
-std::string hell_world(std::string x);
-RcppExport SEXP pegax_hell_world(SEXP xSEXP) {
+// hello_world
+std::string hello_world(std::string x);
+RcppExport SEXP pegax_hello_world(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(hell_world(x));
+    rcpp_result_gen = Rcpp::wrap(hello_world(x));
     return rcpp_result_gen;
 END_RCPP
-}
-
-static const R_CallMethodDef CallEntries[] = {
-    {"pegax_peg_sum", (DL_FUNC) &pegax_peg_sum, 1},
-    {"pegax_hell_world", (DL_FUNC) &pegax_hell_world, 1},
-    {NULL, NULL, 0}
-};
-
-RcppExport void R_init_pegax(DllInfo *dll) {
-    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
-    R_useDynamicSymbols(dll, FALSE);
 }
