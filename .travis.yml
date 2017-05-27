@@ -2,6 +2,9 @@ language: r
 sudo: false
 cache: packages
 
+r_github_packages:
+  - Ironholds/piton
+
 env:
  global:
    - CRAN: https://cran.rstudio.com
