@@ -17,8 +17,8 @@ authority_years(x)
 authority parsing
 }
 \examples{
-authority_name("Linnaeus, 1758")
-authority_year("Linnaeus, 1758")
+authority_names("Linnaeus, 1758")
+authority_years("Linnaeus, 1758")
 
 x <- c('Arrhenatherum elatius var. elatius',
            'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',

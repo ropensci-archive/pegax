@@ -2,4 +2,5 @@
 
 export(authority_names)
 export(authority_years)
+import(Rcpp)
 useDynLib(pegax)
