@@ -1,7 +1,7 @@
 pegax
 =====
 
-
+[![Build Status](https://travis-ci.org/ropenscilabs/pegax.svg?branch=master)](https://travis-ci.org/ropenscilabs/pegax)
 
 Taxonomy PEG (Parsing Expression Grammar) rules
 
