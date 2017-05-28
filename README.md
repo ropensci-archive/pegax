@@ -5,9 +5,6 @@ pegax
 
 Taxonomy PEG (Parsing Expression Grammar) rules
 
-## finally!
-
-![img](inst/img/photo.png)
 
 ## E.g.
 
