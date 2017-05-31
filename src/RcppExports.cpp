@@ -5,17 +5,6 @@
 
 using namespace Rcpp;
 
-// authority_year
-std::string authority_year(std::string x);
-RcppExport SEXP pegax_authority_year(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(authority_year(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 // authority_name
 std::string authority_name(std::string x);
 RcppExport SEXP pegax_authority_name(SEXP xSEXP) {
@@ -27,14 +16,14 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// peg_sum
-NumericVector peg_sum(CharacterVector x);
-RcppExport SEXP pegax_peg_sum(SEXP xSEXP) {
+// authority_year
+std::string authority_year(std::string x);
+RcppExport SEXP pegax_authority_year(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< CharacterVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(peg_sum(x));
+    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(authority_year(x));
     return rcpp_result_gen;
 END_RCPP
 }
