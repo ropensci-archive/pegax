@@ -1,6 +1,6 @@
 Package: pegax
 Title: Taxonomy PEG (Parsing Expression Grammar)
-Description: Taxonomy PEG (Parsing Expression Grammar) client, with 
+Description: Taxonomy PEG (Parsing Expression Grammar) client, with
     grammar for parsing taxonomic names.
 Version: 0.0.2.9110
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"), email =
@@ -15,4 +15,3 @@ LinkingTo: Rcpp, piton
 Suggests: testthat
 RoxygenNote: 6.0.1
 SystemRequirements: C++11
-Remotes: Ironholds/piton
