@@ -2,6 +2,7 @@ pegax
 =====
 
 [![Build Status](https://travis-ci.org/ropenscilabs/pegax.svg?branch=master)](https://travis-ci.org/ropenscilabs/pegax)
+[![codecov.io](https://codecov.io/github/ropenscilabs/pegax/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/pegax?branch=master)
 
 Taxonomy PEG (Parsing Expression Grammar) rules
 
