@@ -2,14 +2,18 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 authority_name <- function(x) {
-    .Call('pegax_authority_name', PACKAGE = 'pegax', x)
+    .Call('_pegax_authority_name', PACKAGE = 'pegax', x)
 }
 
 authority_year <- function(x) {
-    .Call('pegax_authority_year', PACKAGE = 'pegax', x)
+    .Call('_pegax_authority_year', PACKAGE = 'pegax', x)
+}
+
+name_subsp <- function(x) {
+    .Call('_pegax_name_subsp', PACKAGE = 'pegax', x)
 }
 
 hello_world <- function(x) {
-    .Call('pegax_hello_world', PACKAGE = 'pegax', x)
+    .Call('_pegax_hello_world', PACKAGE = 'pegax', x)
 }
 

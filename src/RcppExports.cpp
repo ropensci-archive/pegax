@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // authority_name
 std::string authority_name(std::string x);
-RcppExport SEXP pegax_authority_name(SEXP xSEXP) {
+RcppExport SEXP _pegax_authority_name(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -18,7 +18,7 @@ END_RCPP
 }
 // authority_year
 std::string authority_year(std::string x);
-RcppExport SEXP pegax_authority_year(SEXP xSEXP) {
+RcppExport SEXP _pegax_authority_year(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -27,9 +27,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// name_subsp
+std::string name_subsp(std::string x);
+RcppExport SEXP _pegax_name_subsp(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(name_subsp(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 // hello_world
 std::string hello_world(std::string x);
-RcppExport SEXP pegax_hello_world(SEXP xSEXP) {
+RcppExport SEXP _pegax_hello_world(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;

@@ -62,7 +62,34 @@ authority_names(x)
 authority_years(x)
 ```
 
+Even Moar
+
+```{r}
+library("charlatan")
+per <- charlatan::PersonProvider$new()
+date <- charlatan::DateTimeProvider$new()
+x <- replicate(10^4, paste(
+    sample(per$person$last_names, 1),
+    date$year(),
+    sep = ", "
+  )
+)
+length(x)
+
+# years
+#plyr::llply(x, authority_years, .inform = TRUE)
+authority_years(x)
+system.time(authority_years(x))
+
+# names
+#plyr::llply(x, authority_names, .inform = TRUE)
+authority_names(x)
+system.time(authority_names(x))
+```
+
 ## R DSL to make custom PEGS for taxonomy
+
+not made yet - but we can dream
 
 ```
 pegax({

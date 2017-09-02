@@ -17,6 +17,14 @@ struct name
   : plus< alpha >
 {};
 
+// name - with optional apostrophe
+struct name2
+  : seq<
+    alpha,
+    opt< one< '\'', '-', '_' > >,
+    plus< alpha >
+> {};
+
 // Parsing rule that matches a non-empty sequence of
 // numbers of length 4.
 
@@ -30,7 +38,7 @@ struct numbers
 // on failure.
 
 struct grammar
-  : must< name, one< ',' >, space, numbers, eof >
+  : must< name2, one< ',' >, space, numbers, eof >
 {};
 
 // Class template for user-defined actions that does

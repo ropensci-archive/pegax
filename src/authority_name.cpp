@@ -17,6 +17,20 @@ struct name
   : plus< alpha >
 {};
 
+// name - with optional apostrophe
+struct named
+  : seq<
+    alpha,
+    opt< one< '\'', '-', '_', '.' > >,
+    plus< alpha >,
+    opt< one< ',' > >,
+    opt< space >
+> {};
+
+// name - with optional apostrophe
+struct name3
+  : rep_min< 1, named > {};
+
 // Parsing rule that matches a non-empty sequence of
 // numbers of length 4.
 
@@ -30,7 +44,7 @@ struct numbers
 // on failure.
 
 struct grammar
-  : must< name, one< ',' >, space, numbers, eof >
+  : must< opt< one< '(' > >, name3, opt< one< ',' > >, opt< space >, numbers, opt< one< ')' > >, eof >
 {};
 
 // Class template for user-defined actions that does
@@ -46,7 +60,7 @@ struct action
 // with the portion of the input that matched the rule.
 
 template<>
-struct action< name >
+struct action< name3 >
 {
   template< typename Input >
   static void apply( const Input& in, std::string& v)

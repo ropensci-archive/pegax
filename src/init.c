@@ -3,19 +3,17 @@
 #include <stdlib.h> // for NULL
 #include <R_ext/Rdynload.h>
 
-/* FIXME:
- Check these declarations against the C/Fortran source code.
- */
-
 /* .Call calls */
-extern SEXP pegax_hello_world(SEXP);
-extern SEXP pegax_authority_name(SEXP);
-extern SEXP pegax_authority_year(SEXP);
+extern SEXP _pegax_hello_world(SEXP);
+extern SEXP _pegax_authority_name(SEXP);
+extern SEXP _pegax_authority_year(SEXP);
+extern SEXP _pegax_name_subsp(SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
-  {"pegax_hello_world", (DL_FUNC) &pegax_hello_world, 1},
-  {"pegax_authority_name", (DL_FUNC) &pegax_authority_name, 1},
-  {"pegax_authority_year", (DL_FUNC) &pegax_authority_year, 1},
+  {"_pegax_hello_world", (DL_FUNC) &_pegax_hello_world, 1},
+  {"_pegax_authority_name", (DL_FUNC) &_pegax_authority_name, 1},
+  {"_pegax_authority_year", (DL_FUNC) &_pegax_authority_year, 1},
+  {"_pegax_name_subsp", (DL_FUNC) &_pegax_name_subsp, 1},
   {NULL, NULL, 0}
 };
 
