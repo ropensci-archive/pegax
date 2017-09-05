@@ -3,9 +3,7 @@ using namespace Rcpp;
 
 // [[Rcpp::depends(piton)]]
 #include <pegtl.hpp>
-
 using namespace tao::TAOCPP_PEGTL_NAMESPACE;
-// using namespace pegtl = tao::pegtl;
 
 namespace authorname
 {

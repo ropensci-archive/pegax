@@ -3,12 +3,13 @@ using namespace Rcpp;
 
 // [[Rcpp::depends(piton)]]
 #include <pegtl.hpp>
-
 using namespace tao::TAOCPP_PEGTL_NAMESPACE;
-// using namespace pegtl = tao::pegtl;
 
 namespace authoryear
 {
+
+struct spaceChars : space {};
+struct softSpace : star< spaceChars >{};
 
 // Parsing rule that matches a non-empty sequence of
 // alphabetic ascii-characters with greedy-matching.
@@ -25,12 +26,67 @@ struct name2
     plus< alpha >
 > {};
 
-// Parsing rule that matches a non-empty sequence of
-// numbers of length 4.
+struct yearNumber
+  : seq<
+    sor< one< '1' >, one< '2' > >,
+    sor< one< '0' >, one< '7' >, one< '8' >, one< '9' > >,
+    plus< digit >,
+    opt< one< '?' > >
+>{};
 
+struct yearWithChar
+  : seq< 
+    yearNumber,
+    plus< alpha >
+>{};
+
+struct yearWithParens
+  : seq<
+    ::string< '(' >,
+    softSpace,
+    sor< yearWithChar, yearNumber>,
+    softSpace,
+    ::string< ')' >
+>{};
+
+struct yearWithPage
+  : seq<
+    sor< yearWithChar, yearNumber >,
+    softSpace,
+    ::string< ':' >,
+    softSpace,
+    star< digit >
+>{};
+
+struct yearApprox
+  : seq<
+    ::string< '[' >,
+    softSpace,
+    yearNumber,
+    softSpace,
+    ::string< ']' >
+>{};
+  
+struct yearWithDot
+  : seq< 
+    yearNumber, 
+    ::string< '.' >
+>{};
+
+struct yearRange
+  : seq< 
+    yearNumber,
+    ::string< '-' >,
+    plus< digit >,
+    star< alpha >
+>{};
+  
 struct numbers
-  : plus< digit >
+  : sor< yearNumber, yearWithChar, yearWithParens, yearWithPage, 
+    yearApprox, yearWithDot, yearRange >
 {};
+
+
 
 // Parsing rule that matches a sequence of the 'prefix'
 // rule, the 'name' rule, a literal "!", and 'eof'
@@ -38,8 +94,15 @@ struct numbers
 // on failure.
 
 struct grammar
-  : must< name2, one< ',' >, space, numbers, eof >
-{};
+  : must< 
+    opt< one< '(' > >, 
+    name2, 
+    opt< one< ',' > >, 
+    space, 
+    numbers, 
+    opt< one< ')' > >,
+    eof 
+>{};
 
 // Class template for user-defined actions that does
 // nothing by default.

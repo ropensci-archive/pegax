@@ -2,6 +2,6 @@
 
 export(pgx_authority_names)
 export(pgx_authority_years)
-export(pgx_subsp)
+export(pgx_ranks)
 import(Rcpp)
 useDynLib(pegax)

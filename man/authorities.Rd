@@ -57,4 +57,25 @@ x <- c('Arrhenatherum elatius var. elatius',
            'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
            'Vanessa atalanta (Linnaeus, 1758)')
 }
+
+# years
+pgx_authority_years("(Linnaeus, 1758)")
+pgx_authority_years("(Linnaeus 1758)")
+pgx_authority_years("Linnaeus 1758")
+pgx_authority_years("Linnaeus 2034")
+pgx_authority_years("Linnaeus 2014?")
+pgx_authority_years("Linnaeus (2014)")
+pgx_authority_years("Linnaeus ( 2014)")
+pgx_authority_years("Linnaeus (2014 )")
+# pgx_authority_years("Linnaeus 1998:29")
+pgx_authority_years("Linnaeus [1998]")
+pgx_authority_years("Linnaeus [199?]")
+pgx_authority_years("Linnaeus [1994?]")
+# pgx_authority_years("Linnaeus 1994. a")
+# pgx_authority_years("Linnaeus 1991-1998")
+# pgx_authority_years("Linnaeus 1991-98")
+# pgx_authority_years("Linnaeus 1815 [1816]")
+# pgx_authority_years("Linnaeus 2014a") # should work though
+# pgx_authority_years("(Linnaeus 1158)")
+# pgx_authority_years("Linnaeus - 1758")
 }

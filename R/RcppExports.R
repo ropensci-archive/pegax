@@ -9,8 +9,8 @@ authority_year <- function(x) {
     .Call('_pegax_authority_year', PACKAGE = 'pegax', x)
 }
 
-name_subsp <- function(x) {
-    .Call('_pegax_name_subsp', PACKAGE = 'pegax', x)
+rank_name <- function(x) {
+    .Call('_pegax_rank_name', PACKAGE = 'pegax', x)
 }
 
 hello_world <- function(x) {
