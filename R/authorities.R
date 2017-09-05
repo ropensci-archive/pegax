@@ -33,7 +33,7 @@
 #'
 #' x <- c('Smith, 1456', 'Foobarcheesestuff, 1001', 'Smith, 1987')
 #' pgx_authority_names(x)
-#' pgx_authority_years(x)
+#' # pgx_authority_years(x)
 #'
 #' # with sample data
 #' # plyr::llply(pg_authorities, pgx_authority_names, .inform = TRUE)
