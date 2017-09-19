@@ -2,7 +2,7 @@ Package: pegax
 Title: Taxonomy PEG (Parsing Expression Grammar)
 Description: Taxonomy PEG (Parsing Expression Grammar) client, with
     grammar for parsing taxonomic names.
-Version: 0.0.2.9110
+Version: 0.0.2.9411
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"), email =
     "myrmecocystus+r@gmail.com")
 License: MIT + file LICENSE

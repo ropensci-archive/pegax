@@ -149,6 +149,29 @@ namespace rank
         ::string< 'm', 'u', 't', '.' >
       >{};
       
+    // struct sas
+    //   : seq< space, plus< alpha >, space >
+    // {};
+    struct asa
+      : seq< plus< alpha >, space, plus< alpha > >
+    {};
+      
+    // struct txtspacetxt
+    //   : seq< 
+    //     plus< alpha >, 
+    //     sor< space, sas >
+    //   >{};
+    struct txtspacetxt
+      : sor< 
+        seq< asa, space  >, 
+        seq< plus< alpha >, space >
+      >{};
+    
+    struct txtany
+      : seq< opt< space >, plus< tao::TAOCPP_PEGTL_NAMESPACE::any > >
+    {};
+      
+      
 // struct oror
 //   : seq<
 //     opt< space >,
@@ -157,12 +180,20 @@ namespace rank
 // > {};
 
 struct oror
-  : sor< var, variety, var_bracket, subsp, ssp >
-{};
+  : sor< 
+    rankVar, rankForma, rankSsp, rankOther, rankOtherUncommon,
+    rankUninomial, approximation, comparison 
+  >{};
 
 // grammar
 struct grammar
-  : must< opt< space >, oror, opt< space >, eof >
+  : star< 
+      // opt< txtspacetxt >, opt< space >, 
+      txtspacetxt,
+      oror, 
+      // opt< space >, opt< txtany >, 
+      opt< txtany >,
+      eof >
 {};
 
 // Class template for user-defined actions that does
@@ -189,10 +220,26 @@ struct action< oror >
 
 }  // namespace rank
 
+// std::string rank_name(std::string x){
+//   std::string z;
+//   memory_input<> din(x, "moot");
+//   parse< rank::grammar, rank::action >( din, z );
+//   return z;
+// }
+
 //[[Rcpp::export]]
-std::string rank_name(std::string x){
-  std::string z;
-  memory_input<> din(x, "moot");
-  parse< rank::grammar, rank::action >( din, z );
-  return z;
+CharacterVector rank_names(CharacterVector x){
+  const int n = x.size();
+  CharacterVector y(n);
+  // y[0] = NA_STRING;
+  for (int i=0; i < n; ++i) {
+    std::string z;
+    memory_input<> din(x[i], "moot");
+    parse< rank::grammar, rank::action >( din, z );
+    y[i] = z;
+  }
+  return y;
+  // memory_input<> din(x, "moot");
+  // parse< rank::grammar, rank::action >( din, z );
+  // return z;
 }

@@ -131,6 +131,7 @@ struct action< numbers >
 //[[Rcpp::export]]
 std::string authority_year(std::string x){
   std::string numbers;
+  
   memory_input<> din(x, "mooter");
   parse< authoryear::grammar, authoryear::action >( din, numbers );
   return numbers;

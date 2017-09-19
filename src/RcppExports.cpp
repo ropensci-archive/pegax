@@ -27,14 +27,14 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rank_name
-std::string rank_name(std::string x);
-RcppExport SEXP _pegax_rank_name(SEXP xSEXP) {
+// rank_names
+CharacterVector rank_names(CharacterVector x);
+RcppExport SEXP _pegax_rank_names(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rank_name(x));
+    Rcpp::traits::input_parameter< CharacterVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(rank_names(x));
     return rcpp_result_gen;
 END_RCPP
 }
