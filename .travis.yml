@@ -6,6 +6,9 @@ dist: trusty
 r_github_packages:
   - jimhester/covr
 
+compiler:
+  - clang
+
 env:
  global:
    - CRAN: https://cran.rstudio.com
