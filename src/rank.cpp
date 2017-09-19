@@ -12,27 +12,30 @@ namespace rank
     : seq<
       ::string< 'v', 'a', 'r' >,
       opt< one< '.' > >
-    > {};
+    > 
+  {};
 
   struct variety
     : ::string< 'v', 'a', 'r', 'i', 'e', 't', 'y' >
-    {};
+  {};
 
   struct var_bracket
     : ::string< '[', 'v', 'a', 'r', '.', ']' >
-    {};
+  {};
 
   struct subsp
     : seq<
       ::string< 's', 'u', 'b', 's', 'p' >,
       opt< one< '.' > >
-    > {};
+    > 
+  {};
 
   struct ssp
     : seq<
       ::string< 's', 's', 'p' >,
       opt< one< '.' > >
-    > {};
+    >
+  {};
 
   // below from gnparser
   struct rankVar
@@ -43,7 +46,8 @@ namespace rank
         ::string< 'v', 'a', 'r' >
       >,
       opt< space, one<'.'> >
-    >{};
+    >
+  {};
 
   struct rankForma
     : seq<
@@ -55,7 +59,8 @@ namespace rank
         ::string< 'f' >
       >,
       opt< space, one<'.'> >
-    > {};
+    > 
+  {};
     
   struct rankSsp
     : seq<
@@ -64,7 +69,8 @@ namespace rank
         ::string< 's', 'u', 'b', 's', 'p' >
       >,
       opt< space, one<'.'> >
-    >{};
+    >
+  {};
 
   struct rankOther
     : seq<
@@ -98,7 +104,8 @@ namespace rank
         ::string< 'p', 'a', 't', 'h', 'o', 'v', 'a', 'r', '.' >
       >,
       opt< space >
-    >{};
+      >
+    {};
     
     struct rankUninomial
       : seq<
@@ -115,7 +122,8 @@ namespace rank
           ::string< 's', 'u', 'p', 'e', 'r', 't', 'r', 'i', 'b' >
         >,
         opt< one< '.' >>
-      >{};
+      >
+    {};
       
     struct approximation
       : sor< 
@@ -135,11 +143,13 @@ namespace rank
           >,
           opt< one< '.' > >
         >
-      >{};
+      >
+    {};
       
     struct comparison
       : seq< ::string< 'c', 'f' >, opt< one< '.' > > 
-    >{};
+      >
+    {};
 
     struct rankOtherUncommon
       : sor<
@@ -147,7 +157,8 @@ namespace rank
         ::string< 'n', 'a', 't' >,
         ::string< 'f', '.', 's', 'p' >,
         ::string< 'm', 'u', 't', '.' >
-      >{};
+      >
+    {};
       
     // struct sas
     //   : seq< space, plus< alpha >, space >
@@ -165,7 +176,8 @@ namespace rank
       : sor< 
         seq< asa, space  >, 
         seq< plus< alpha >, space >
-      >{};
+        >
+    {};
     
     struct txtany
       : seq< opt< space >, plus< tao::TAOCPP_PEGTL_NAMESPACE::any > >
@@ -179,11 +191,12 @@ namespace rank
 //     opt< space >
 // > {};
 
-struct oror
-  : sor< 
-    rankVar, rankForma, rankSsp, rankOther, rankOtherUncommon,
-    rankUninomial, approximation, comparison 
-  >{};
+  struct oror
+    : sor< 
+      rankVar, rankForma, rankSsp, rankOther, rankOtherUncommon,
+      rankUninomial, approximation, comparison 
+    >
+  {};
 
 // grammar
 struct grammar

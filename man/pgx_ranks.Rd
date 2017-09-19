@@ -41,7 +41,7 @@ pgx_ranks("Lacanobia nr. subjuncta Bold:Aab, 0925")
 pgx_ranks("Calidris cf. cooperi")
 
 # many at once
-pgx_ranks2(c("Helianthus annuus var. annuus", 
+pgx_ranks(c("Helianthus annuus var. annuus", 
   "Helianthus annuus ssp. annuus", "Caulerpa cupressoides forma nuda"))
 
 }
