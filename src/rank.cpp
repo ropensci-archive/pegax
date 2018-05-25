@@ -183,14 +183,6 @@ namespace rank
       : seq< opt< space >, plus< tao::TAOCPP_PEGTL_NAMESPACE::any > >
     {};
       
-      
-// struct oror
-//   : seq<
-//     opt< space >,
-//     sor< var, variety, var_bracket, subsp, ssp >,
-//     opt< space >
-// > {};
-
   struct oror
     : sor< 
       rankVar, rankForma, rankSsp, rankOther, rankOtherUncommon,

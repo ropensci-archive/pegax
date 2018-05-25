@@ -9,11 +9,19 @@ authority_year <- function(x) {
     .Call('_pegax_authority_year', PACKAGE = 'pegax', x)
 }
 
+replace_all_symbols <- function(x) {
+    .Call('_pegax_replace_all_symbols', PACKAGE = 'pegax', x)
+}
+
+replace_specific_symbols <- function(x) {
+    .Call('_pegax_replace_specific_symbols', PACKAGE = 'pegax', x)
+}
+
 rank_names <- function(x) {
     .Call('_pegax_rank_names', PACKAGE = 'pegax', x)
 }
 
-hello_world <- function(x) {
-    .Call('_pegax_hello_world', PACKAGE = 'pegax', x)
+scrub_names <- function(x) {
+    .Call('_pegax_scrub_names', PACKAGE = 'pegax', x)
 }
 

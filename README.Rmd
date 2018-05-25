@@ -15,21 +15,38 @@ knitr::opts_chunk$set(
 
 Taxonomy PEG (Parsing Expression Grammar) rules
 
-## E.g.
+## Example rules
+
+Capture any letter
 
 ```
 struct name
   : plus< alpha >
 {};
+```
 
+Capture any digit
+
+```
 struct numbers
   : plus< digit >
 {};
+```
 
+## Grammar
+
+Rules are combined to form a grammar, 
+
+e.g., string must match `name`, then have one comma, then one space, 
+then match `numbers`.
+
+```
 struct grammar
   : must< name, one< ',' >, space, numbers, eof >
 {};
 ```
+
+Which is then applied to parsing user input strings
 
 ## Install
 
@@ -47,21 +64,21 @@ library("pegax")
 Author name
 
 ```{r}
-authority_names("Linnaeus, 1758")
+pgx_authority_names("Linnaeus, 1758")
 ```
 
 Author year
 
 ```{r}
-authority_years("Linnaeus, 1758")
+pgx_authority_years("Linnaeus, 1758")
 ```
 
 Moar
 
 ```{r}
 x <- c('Smith, 1456', 'Foobarcheesestuff, 1001', 'Smith, 1987')
-authority_names(x)
-authority_years(x)
+pgx_authority_names(x)
+pgx_authority_years(x)
 ```
 
 Even Moar
@@ -79,14 +96,25 @@ x <- replicate(10^4, paste(
 length(x)
 
 # years
-#plyr::llply(x, authority_years, .inform = TRUE)
-authority_years(x)
-system.time(authority_years(x))
+invisible(pgx_authority_years(x))
+system.time(pgx_authority_years(x))
 
 # names
-#plyr::llply(x, authority_names, .inform = TRUE)
-authority_names(x)
-system.time(authority_names(x))
+invisible(pgx_authority_names(x))
+system.time(pgx_authority_names(x))
+```
+
+## Parse ranks
+
+```{r}
+pgx_ranks("Fagus sylvatica subsp. orientalis")
+```
+
+Many at cone
+
+```{r}
+pgx_ranks(c("Helianthus annuus var. annuus", 
+   "Helianthus annuus ssp. annuus", "Caulerpa cupressoides forma nuda"))
 ```
 
 ## R DSL to make custom PEGS for taxonomy

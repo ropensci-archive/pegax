@@ -27,6 +27,28 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// replace_all_symbols
+std::string replace_all_symbols(std::string x);
+RcppExport SEXP _pegax_replace_all_symbols(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(replace_all_symbols(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// replace_specific_symbols
+std::string replace_specific_symbols(std::string const& x);
+RcppExport SEXP _pegax_replace_specific_symbols(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string const& >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(replace_specific_symbols(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rank_names
 CharacterVector rank_names(CharacterVector x);
 RcppExport SEXP _pegax_rank_names(SEXP xSEXP) {
@@ -38,14 +60,14 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// hello_world
-std::string hello_world(std::string x);
-RcppExport SEXP _pegax_hello_world(SEXP xSEXP) {
+// scrub_names
+CharacterVector scrub_names(CharacterVector x);
+RcppExport SEXP _pegax_scrub_names(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(hello_world(x));
+    Rcpp::traits::input_parameter< CharacterVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(scrub_names(x));
     return rcpp_result_gen;
 END_RCPP
 }
