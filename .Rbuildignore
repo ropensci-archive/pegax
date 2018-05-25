@@ -5,3 +5,4 @@ README.Rmd
 .travis.yml
 .github
 Makefile
+^CODE_OF_CONDUCT\.md$

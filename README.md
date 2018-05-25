@@ -7,7 +7,7 @@ pegax
 [![codecov.io](https://codecov.io/github/ropenscilabs/pegax/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/pegax?branch=master)
 
 
-Taxonomy PEG (Parsing Expression Grammar) for R
+Taxonomy PEG (Parsing Expression Grammar) rules
 
 ## Example rules
 
@@ -27,9 +27,11 @@ struct numbers
 {};
 ```
 
-## Rules are combined to form a grammar
+## Grammar
 
-e.g., string must match `name`, then have one comma, then one space,
+Rules are combined to form a grammar, 
+
+e.g., string must match `name`, then have one comma, then one space, 
 then match `numbers`.
 
 ```
@@ -101,14 +103,14 @@ length(x)
 # years
 invisible(pgx_authority_years(x))
 system.time(pgx_authority_years(x))
-#>    user  system elapsed
-#>   0.036   0.002   0.039
+#>    user  system elapsed 
+#>   0.020   0.002   0.022
 
 # names
 invisible(pgx_authority_names(x))
 system.time(pgx_authority_names(x))
-#>    user  system elapsed
-#>   0.032   0.002   0.034
+#>    user  system elapsed 
+#>   0.019   0.002   0.021
 ```
 
 ## Parse ranks
@@ -123,7 +125,7 @@ Many at cone
 
 
 ```r
-pgx_ranks(c("Helianthus annuus var. annuus",
+pgx_ranks(c("Helianthus annuus var. annuus", 
    "Helianthus annuus ssp. annuus", "Caulerpa cupressoides forma nuda"))
 #> [1] "var"   "ssp"   "forma"
 ```
@@ -143,3 +145,10 @@ pegax({
   plus(:cat2:)
 })
 ```
+
+## Meta
+
+* citing this package: run `citation(package = "pegax")`
+* Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+  By participating in this project you agree to abide by its terms.
+  
