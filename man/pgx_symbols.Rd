@@ -15,6 +15,9 @@ names in a vector
 \description{
 Clean taxonomic names of symbols
 }
+\details{
+doesn't use PEGs, just regular C++
+}
 \examples{
 pgx_symbols(x = "Ste>phanolaimus spartinae")
 pgx_symbols("Ste*phanolaimus")

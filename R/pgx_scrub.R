@@ -3,6 +3,7 @@
 #' @export
 #' @param x (character) one or more taxonomic names
 #' @return names in a vector
+#' @details doesn't use PEGs, just regular C++ 
 #' @examples
 #' pgx_symbols(x = "Ste>phanolaimus spartinae")
 #' pgx_symbols("Ste*phanolaimus")
