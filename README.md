@@ -62,7 +62,7 @@ Author name
 
 ```r
 pgx_authority_names("Linnaeus, 1758")
-#> [1] "Linnaeus, "
+#> [1] "Linnaeus"
 ```
 
 Author year
@@ -77,11 +77,13 @@ Moar
 
 
 ```r
-x <- c('Smith, 1456', 'Foobarcheesestuff, 1001', 'Smith, 1987')
+x <- c('Smith, 1456', 'Foobarcheesestuff, 1001', 'Smith, 1987', "Linnaeus 2014", "Linnaeus 2014?", "Page 1234    ", "     Jones, 1789     ")
 pgx_authority_names(x)
-#> [1] "Smith, "             "Foobarcheesestuff, " "Smith, "
+#> [1] "Smith"             "Foobarcheesestuff" "Smith"            
+#> [4] "Linnaeus"          "Linnaeus"          "Page"             
+#> [7] "Jones"
 pgx_authority_years(x)
-#> Error in FUN(X[[i]], ...): mooter:1:7(7): parse error matching authoryear::numbers
+#> [1] "1456"  "1001"  "1987"  "2014"  "2014?" "1234"  "1789"
 ```
 
 Even Moar
@@ -104,13 +106,17 @@ length(x)
 invisible(pgx_authority_years(x))
 system.time(pgx_authority_years(x))
 #>    user  system elapsed 
-#>   0.020   0.002   0.022
+#>   0.022   0.005   0.028
+## vs. regex
+### write me
 
 # names
 invisible(pgx_authority_names(x))
 system.time(pgx_authority_names(x))
 #>    user  system elapsed 
-#>   0.019   0.002   0.021
+#>   0.026   0.004   0.030
+## vs. regex
+### write me
 ```
 
 ## Parse ranks
