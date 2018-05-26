@@ -1,6 +1,8 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+#include "helpers.h"
+
 // [[Rcpp::depends(piton)]]
 #include <pegtl.hpp>
 using namespace tao::TAOCPP_PEGTL_NAMESPACE;
@@ -29,7 +31,8 @@ struct name2
 struct yearNumber
   : seq<
     sor< one< '1' >, one< '2' > >,
-    sor< one< '0' >, one< '7' >, one< '8' >, one< '9' > >,
+    // one< digit >,
+    // sor< one< '0' >, one< '2' >, one< '2' >, one< '3' >, one< '4' >, one< '5' >, one< '6' >, one< '7' >, one< '8' >, one< '9' > >,
     plus< digit >,
     opt< one< '?' > >
 >{};
@@ -130,9 +133,9 @@ struct action< numbers >
 
 //[[Rcpp::export]]
 std::string authority_year(std::string x){
+  std::string z = trim_copy(x);
   std::string numbers;
-  
-  memory_input<> din(x, "mooter");
+  memory_input<> din(z, "mooter");
   parse< authoryear::grammar, authoryear::action >( din, numbers );
   return numbers;
 }

@@ -1,6 +1,8 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+#include "helpers.h"
+
 // [[Rcpp::depends(piton)]]
 #include <pegtl.hpp>
 using namespace tao::TAOCPP_PEGTL_NAMESPACE;
@@ -23,6 +25,7 @@ struct named
     plus< alpha >,
     opt< one< ',' > >,
     opt< space >
+    // sor< opt< space >, one< '?' > >
 > {};
 
 // name - with optional apostrophe
@@ -42,7 +45,7 @@ struct numbers
 // on failure.
 
 struct grammar
-  : must< opt< one< '(' > >, name3, opt< one< ',' > >, opt< space >, numbers, opt< one< ')' > >, eof >
+  : must< opt< one< '(' > >, name3, opt< one< ',' > >, opt< space >, numbers, opt< sor< one< ')' >, one< '?' > > >, eof >
 {};
 
 // Class template for user-defined actions that does
@@ -71,8 +74,11 @@ struct action< name3 >
 
 //[[Rcpp::export]]
 std::string authority_name(std::string x){
+  std::string z = trim_copy(x);
   std::string name;
-  memory_input<> din(x, "moot");
+  memory_input<> din(z, "moot");
   parse< authorname::grammar, authorname::action >( din, name );
-  return name;
+  std::string trimmed_name = trim_copy(name);
+  trimmed_name = replace_all_symbols(trimmed_name);
+  return trimmed_name;
 }

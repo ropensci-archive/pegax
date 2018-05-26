@@ -76,7 +76,7 @@ pgx_authority_years("Linnaeus, 1758")
 Moar
 
 ```{r}
-x <- c('Smith, 1456', 'Foobarcheesestuff, 1001', 'Smith, 1987')
+x <- c('Smith, 1456', 'Foobarcheesestuff, 1001', 'Smith, 1987', "Linnaeus 2014", "Linnaeus 2014?", "Page 1234    ", "     Jones, 1789     ")
 pgx_authority_names(x)
 pgx_authority_years(x)
 ```
@@ -98,10 +98,14 @@ length(x)
 # years
 invisible(pgx_authority_years(x))
 system.time(pgx_authority_years(x))
+## vs. regex
+### write me
 
 # names
 invisible(pgx_authority_names(x))
 system.time(pgx_authority_names(x))
+## vs. regex
+### write me
 ```
 
 ## Parse ranks
