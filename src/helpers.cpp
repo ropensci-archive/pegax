@@ -54,3 +54,13 @@ std::string trim_copy(std::string const & str){
   auto s = str;
   return ltrim(rtrim(s));
 }
+
+bool BothAreSpaces(char lhs, char rhs){
+  return (lhs == rhs) && (lhs == ' '); 
+};
+
+std::string multi_space_to_single(std::string x){
+  std::string::iterator new_end = std::unique(x.begin(), x.end(), BothAreSpaces);
+  x.erase(new_end, x.end());
+  return x;
+};

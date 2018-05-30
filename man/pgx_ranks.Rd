@@ -11,7 +11,7 @@ pgx_ranks(x)
 }
 \value{
 the ranks, length equal to lentgh of input vector (empty
-character stirng \code{""} if no match)
+character string \code{""} if no match)
 }
 \description{
 parse out rank names
@@ -26,25 +26,38 @@ pgx_ranks("Fagus sylvatica subsp. orientalis (Lipsky) Greuter & Burdet")
 pgx_ranks("Potamogeton iilinoensis var. ventanicola")
 pgx_ranks("Potamogeton iilinoensis var. ventanicola (Hicken) Horn af Rantzien")
 pgx_ranks("Triticum repens var. vulgäre")
-# pgx_ranks("Aus bus Linn. var. bus")
 pgx_ranks("Callideriphus flavicollis morph. reductus Fuchs 1961")
 pgx_ranks("Caulerpa cupressoides forma nuda")
 pgx_ranks("Chlorocyperus glaber form. fasciculariforme (Lojac.) Soó")
 pgx_ranks("Polypodium vulgare nothosubsp. mantoniae (Rothm.) Schidlay")
 pgx_ranks("Prunus armeniaca convar. budae (Pénzes) Soó")
-# pgx_ranks("Polypodium pectinatum (L.) f. typica Rosenst.")
 pgx_ranks("Poa annua fo varia")
-pgx_ranks("Poa annua fovaria") # should give empty string
+
 pgx_ranks("Polyrhachis orsyllus nat musculus Forel 1901")
-pgx_ranks("Polyrhachis orsyllus natmusculus Forel 1901") # should give empty string
 pgx_ranks("Xenodon sp.")
 pgx_ranks("Acarinina aff. pentacamerata")
 pgx_ranks("Lacanobia nr. subjuncta Bold:Aab, 0925")
 pgx_ranks("Calidris cf. cooperi")
 
 pgx_ranks("Prunus mexicana var. reticulata")
+pgx_ranks("Prunus mexicana  var. reticulata")
+pgx_ranks("Prunus mexicana   var.   reticulata")
 pgx_ranks("Prunus mexicana Watson var. reticulata")
+pgx_ranks("Prunus mexicana Watson var.")
+pgx_ranks("Prunus mexicana Sam Watson var. reticulata")
+
+pgx_ranks("Armeria (Mill) Willd fma. originaria Bern.")
+pgx_ranks("Armeria maaritima (Mill) Willd fma. originaria Bern.")
+pgx_ranks("Cotoneaster (Pyracantha) rogersiana var.aurantiaca")
+
+# dots in authorities: should give empty string
+pgx_ranks("Aus bus Linn. var. bus")
+pgx_ranks("Poa annua fovaria") 
+pgx_ranks("Polyrhachis orsyllus natmusculus Forel 1901")
+pgx_ranks("Polypodium pectinatum (L.) f. typica Rosenst.")
 pgx_ranks("Prunus mexicana S. Watson var. reticulata")
+pgx_ranks("Armeria (Mill.) Willd. fma. originaria Bern.")
+pgx_ranks("Armeria maaritima (Mill.) Willd. fma. originaria Bern.")
 
 # many at once
 pgx_ranks(c("Helianthus annuus var. annuus", 

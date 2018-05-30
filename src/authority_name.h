@@ -37,9 +37,12 @@ namespace pegax {
           opt< one< ',' > >, 
           opt< space >, 
           opt< numbers >, 
-          opt< sor< one< ')' >, one< '?' > > >,
-          eof
+          opt< sor< one< ')' >, one< '?' > > >
       >
+    {};
+    
+    struct authornoyear
+      : seq< opt< one< '(' > >, name3, opt< sor< one< ')' >, one< '?' > > > >
     {};
      
     // grammar

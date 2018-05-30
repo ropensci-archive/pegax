@@ -42,7 +42,7 @@ namespace pegax {
     struct rankVar
       : seq<
         sor<
-          ::string< 'v', 'r', 'i', 'e', 't', 'y' >, // vriety
+          ::string< 'v', 'a', 'r', 'i', 'e', 't', 'y' >, // variety
           ::string< '[', 'v', 'a', 'r', '.', ']' >, // [var.]
           ::string< 'v', 'a', 'r' > // var
         >,
@@ -70,7 +70,7 @@ namespace pegax {
           ::string< 's', 's', 'p' >, // ssp
           ::string< 's', 'u', 'b', 's', 'p' > // subsp
         >,
-        sor< seq< one< '.' >, space >, space >
+        sor< one< '.' >, seq< one< '.' >, space >, space >
       >
     {};
 
@@ -166,24 +166,16 @@ namespace pegax {
         >
       {};
         
-      // struct sas
-      //   : seq< space, plus< alpha >, space >
-      // {};
       struct asa
         : seq< plus< alpha >, space, plus< alpha > >
       {};
-        
-      // struct txtspacetxt
-      //   : seq< 
-      //     plus< alpha >, 
-      //     sor< space, sas >
-      //   >{};
+      
       struct txtspacetxt
-        : sor< 
-          seq< asa, space  >, 
-          seq< plus< alpha >, space >
-          >
-      {};
+        : sor<
+            seq< asa, space, plus< alpha > >,
+            seq< plus< alpha >, space >,
+            seq< asa, space >
+        > {};
       
       struct txtany
         // : seq< opt< space >, plus< tao::TAOCPP_PEGTL_NAMESPACE::any > >
@@ -200,41 +192,55 @@ namespace pegax {
     struct annotators
       : sor< approximation, comparison >
     {};
+    
+    struct nameoptdot
+      : star<
+        plus< alpha >,
+        opt< one<'.'> >
+      >
+    {};
+    
+    struct authur
+      : seq< opt< one< '(' > >, plus< alpha >, opt< sor< one< ')' >, one< '?' > > >, space >
+      // : seq< opt< one< '(' > >, plus< tao::TAOCPP_PEGTL_NAMESPACE::any >, opt< sor< one< ')' >, one< '?' > > >, space >
+      // : seq< opt< one< '(' > >, nameoptdot, opt< sor< one< ')' >, one< '?' > > >, space >
+    {};
 
-  // grammar
-  struct grammar
-    : star< 
-      // opt< txtspacetxt >, opt< space >, 
-      txtspacetxt,
-      sor< oror, seq< seq< authorname::author, space >, oror > >,
-      // opt< space >, opt< txtany >, 
-      // opt< txtany >,
-      txtany,
-      eof 
-    >
-  {};
+    // grammar
+    // matches: 
+    //   (text - space - text) - (<any rank> OR <author> + <any rank>) - (space - text)
+    //   (text - space) - (<any rank> OR <author> + <any rank>) - (space - text)
+    struct grammar
+      : sor< 
+        // opt< txtspacetxt >, opt< space >, 
+        // txtspacetxt,
+        // sor< oror, seq< seq< authorname::authornoyear, space >, oror > >,
+        // oror,
+        // opt< space >, opt< txtany >, 
+        seq< plus< alpha >, space, oror, opt< txtany > >,
+        seq< plus< alpha >, space, plus< alpha >, space, oror, opt< txtany > >,
+        seq< plus< alpha >, space, rep_min_max< 0, 3, authur >, oror, opt< txtany > >,
+        seq< plus< alpha >, space, plus< alpha >, space, rep_min_max< 0, 3, authur >, oror, opt< txtany > >,
+        // txtany,
+        // opt< txtany >,
+        eof 
+      >
+    {};
 
-  // Class template for user-defined actions that does
-  // nothing by default.
+    template< typename Rule >
+    struct action
+      : nothing< Rule >
+    {};
 
-  template< typename Rule >
-  struct action
-    : nothing< Rule >
-  {};
-
-  // Specialisation of the user-defined action to do
-  // something when the 'name' rule succeeds; is called
-  // with the portion of the input that matched the rule.
-
-  template<>
-  struct action< oror >
-  {
-    template< typename Input >
-    static void apply( const Input& in, std::string& v)
+    template<>
+    struct action< oror >
     {
-      v = in.string();
-    }
-  };
+      template< typename Input >
+      static void apply( const Input& in, std::string& v)
+      {
+        v = in.string();
+      }
+    };
 
   }  // namespace rank
 } // namespace pegax
