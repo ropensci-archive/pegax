@@ -4,7 +4,7 @@ test_that("authority_names works as expected", {
   aa <- pgx_authority_names("Linnaeus, 1758")
   
   expect_is(aa, 'character')
-  expect_equal(aa, 'Linnaeus, ')
+  expect_equal(aa, 'Linnaeus')
 })
 
 context("authority_years")

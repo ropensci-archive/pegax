@@ -121,6 +121,12 @@ pgx_ranks(c("Helianthus annuus var. annuus",
    "Helianthus annuus ssp. annuus", "Caulerpa cupressoides forma nuda"))
 ```
 
+## Parse complete names
+
+```{r}
+pgx_parse("Tridentella tangeroae Bruce, 198?")
+```
+
 ## R DSL to make custom PEGS for taxonomy
 
 not made yet - but we can dream

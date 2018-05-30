@@ -27,6 +27,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// parse_name
+DataFrame parse_name(std::string x);
+RcppExport SEXP _pegax_parse_name(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(parse_name(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 // replace_all_symbols
 std::string replace_all_symbols(std::string x);
 RcppExport SEXP _pegax_replace_all_symbols(SEXP xSEXP) {
@@ -57,6 +68,17 @@ BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< CharacterVector >::type x(xSEXP);
     rcpp_result_gen = Rcpp::wrap(rank_names(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// sci_name
+DataFrame sci_name(std::string x);
+RcppExport SEXP _pegax_sci_name(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(sci_name(x));
     return rcpp_result_gen;
 END_RCPP
 }

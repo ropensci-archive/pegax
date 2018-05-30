@@ -9,15 +9,14 @@
 #' @examples
 #' pgx_authority_names("Linnaeus, 1758")
 #' pgx_authority_names("(Linnaeus, 1758)")
+#' pgx_authority_names("(Linnaeus 1758)")
+#' pgx_authority_names("Linnaeus")
+#' pgx_authority_names("Forster")
 #'
 #' \dontrun{
-#' # fails on space
-#' pgx_authority_names("(Linnaeus 1758)")
-#'
 #' # fails on numbers
 #' pgx_authority_names("Arahal et al., 2001")
 #' pgx_authority_names("(Torno, Tomo and Marschoff, 1977)")
-#' pgx_authority_names("Forster")
 #' pgx_authority_names("(Pursh) Elliott")
 #' pgx_authority_names("(Scribn.) Soreng")
 #'

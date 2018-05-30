@@ -2,7 +2,9 @@
 
 export(pgx_authority_names)
 export(pgx_authority_years)
+export(pgx_parse)
 export(pgx_ranks)
+export(pgx_sciname)
 export(pgx_symbols)
 import(Rcpp)
 useDynLib(pegax)

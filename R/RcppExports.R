@@ -9,6 +9,10 @@ authority_year <- function(x) {
     .Call('_pegax_authority_year', PACKAGE = 'pegax', x)
 }
 
+parse_name <- function(x) {
+    .Call('_pegax_parse_name', PACKAGE = 'pegax', x)
+}
+
 replace_all_symbols <- function(x) {
     .Call('_pegax_replace_all_symbols', PACKAGE = 'pegax', x)
 }
@@ -19,6 +23,10 @@ replace_specific_symbols <- function(x) {
 
 rank_names <- function(x) {
     .Call('_pegax_rank_names', PACKAGE = 'pegax', x)
+}
+
+sci_name <- function(x) {
+    .Call('_pegax_sci_name', PACKAGE = 'pegax', x)
 }
 
 scrub_names <- function(x) {

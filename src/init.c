@@ -10,6 +10,9 @@ extern SEXP _pegax_rank_names(SEXP);
 extern SEXP _pegax_scrub_names(SEXP);
 extern SEXP _pegax_replace_all_symbols(SEXP);
 extern SEXP _pegax_replace_specific_symbols(SEXP);
+extern SEXP _pegax_replace_specific_symbols(SEXP);
+extern SEXP _pegax_parse_name(SEXP);
+extern SEXP _pegax_sci_name(SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
   {"_pegax_authority_name", (DL_FUNC) &_pegax_authority_name, 1},
@@ -18,6 +21,8 @@ static const R_CallMethodDef CallEntries[] = {
   {"_pegax_scrub_names", (DL_FUNC) &_pegax_scrub_names, 1},
   {"_pegax_replace_all_symbols", (DL_FUNC) &_pegax_replace_all_symbols, 1},
   {"_pegax_replace_specific_symbols", (DL_FUNC) &_pegax_replace_specific_symbols, 1},
+  {"_pegax_parse_name", (DL_FUNC) &_pegax_parse_name, 1},
+  {"_pegax_sci_name", (DL_FUNC) &_pegax_sci_name, 1},
   {NULL, NULL, 0}
 };
 
