@@ -1,6 +1,8 @@
 #ifndef RANK_H
 #define RANK_H
 
+#include "authority_name.h"
+
 #include <pegtl.hpp>
 using namespace tao::TAOCPP_PEGTL_NAMESPACE;
 
@@ -9,29 +11,29 @@ namespace pegax {
 
     struct var
       : seq<
-        ::string< 'v', 'a', 'r' >,
+        ::string< 'v', 'a', 'r' >, // var
         opt< one< '.' > >
       > 
     {};
 
     struct variety
-      : ::string< 'v', 'a', 'r', 'i', 'e', 't', 'y' >
+      : ::string< 'v', 'a', 'r', 'i', 'e', 't', 'y' > // variety
     {};
 
     struct var_bracket
-      : ::string< '[', 'v', 'a', 'r', '.', ']' >
+      : ::string< '[', 'v', 'a', 'r', '.', ']' > // var.
     {};
 
     struct subsp
       : seq<
-        ::string< 's', 'u', 'b', 's', 'p' >,
+        ::string< 's', 'u', 'b', 's', 'p' >, // subsp
         opt< one< '.' > >
       > 
     {};
 
     struct ssp
       : seq<
-        ::string< 's', 's', 'p' >,
+        ::string< 's', 's', 'p' >, // ssp
         opt< one< '.' > >
       >
     {};
@@ -40,49 +42,50 @@ namespace pegax {
     struct rankVar
       : seq<
         sor<
-          ::string< 'v', 'r', 'i', 'e', 't', 'y' >,
-          ::string< '[', 'v', 'a', 'r', '.', ']' >,
-          ::string< 'v', 'a', 'r' >
+          ::string< 'v', 'r', 'i', 'e', 't', 'y' >, // vriety
+          ::string< '[', 'v', 'a', 'r', '.', ']' >, // [var.]
+          ::string< 'v', 'a', 'r' > // var
         >,
-        opt< space, one<'.'> >
+        sor< space, one<'.'> >
       >
     {};
 
     struct rankForma
       : seq<
         sor<
-          ::string< 'f', 'o', 'r', 'm', 'a' >,
-          ::string< 'f', 'm', 'a' >,
-          ::string< 'f', 'o', 'r', 'm' >,
-          ::string< 'f', 'o' >,
-          ::string< 'f' >
+          ::string< 'f', 'o', 'r', 'm', 'a' >, // forma
+          ::string< 'f', 'm', 'a' >, // fma
+          ::string< 'f', 'o', 'r', 'm' >, // form
+          ::string< 'f', 'o' >, // fo
+          ::string< 'f' > // f
         >,
-        opt< space, one<'.'> >
+        sor<space, one<'.'>>
+        // opt< sor<space, one<'.'>> >
       > 
     {};
       
     struct rankSsp
       : seq<
         sor<
-          ::string< 's', 's', 'p' >,
-          ::string< 's', 'u', 'b', 's', 'p' >
+          ::string< 's', 's', 'p' >, // ssp
+          ::string< 's', 'u', 'b', 's', 'p' > // subsp
         >,
-        opt< space, one<'.'> >
+        sor< seq< one< '.' >, space >, space >
       >
     {};
 
     struct rankOther
       : seq<
         sor<
-          ::string< 'm', 'o', 'r', 'p', 'h', '.' >,
-          ::string< 'n', 'o', 't', 'h', 'o', 's', 'u', 'b', 's', 'p', '.' >,
-          ::string< 'c', 'o', 'n', 'v', 'a', 'r', '.' >,
-          ::string< 'p', 's', 'e', 'u', 'd', 'o', 'v', 'a', 'r', '.' >,
-          ::string< 's', 'e', 'c', 't', '.' >,
-          ::string< 's', 'e', 'r', '.' >,
-          ::string< 's', 'u', 'b', 'v', 'a', 'r', '.' >,
-          ::string< 's', 'u', 'b', 'f', '.' >,
-          ::string< 'r', 'a', 'c', 'e' >,
+          ::string< 'm', 'o', 'r', 'p', 'h', '.' >, // morph.
+          ::string< 'n', 'o', 't', 'h', 'o', 's', 'u', 'b', 's', 'p', '.' >, // nothosubsp.
+          ::string< 'c', 'o', 'n', 'v', 'a', 'r', '.' >, // convar.
+          ::string< 'p', 's', 'e', 'u', 'd', 'o', 'v', 'a', 'r', '.' >, // pseudovar.
+          ::string< 's', 'e', 'c', 't', '.' >, // sect.
+          ::string< 's', 'e', 'r', '.' >, // ser.
+          ::string< 's', 'u', 'b', 'v', 'a', 'r', '.' >, // subvar.
+          ::string< 's', 'u', 'b', 'f', '.' >, // subf.
+          ::string< 'r', 'a', 'c', 'e' >, // race
           // ::string< 'α' >,
           // ::string< 'β', 'β' >,
           // ::string< 'β' >,
@@ -92,15 +95,15 @@ namespace pegax {
           // ::string< 'φ' >,
           // ::string< 'θ' >,
           // ::string< 'μ' >,
-          ::string< 'a', '.' >,
-          ::string< 'b', '.' >,
-          ::string< 'c', '.' >,
-          ::string< 'd', '.' >,
-          ::string< 'e', '.' >,
-          ::string< 'g', '.' >,
-          ::string< 'k', '.' >,
-          ::string< 'p', 'v', '.' >,
-          ::string< 'p', 'a', 't', 'h', 'o', 'v', 'a', 'r', '.' >
+          ::string< 'a', '.' >, // a.
+          ::string< 'b', '.' >, // b.
+          ::string< 'c', '.' >, // c.
+          ::string< 'd', '.' >, // d.
+          ::string< 'e', '.' >, // e.
+          ::string< 'g', '.' >, // g.
+          ::string< 'k', '.' >, // k.
+          ::string< 'p', 'v', '.' >, // pv.
+          ::string< 'p', 'a', 't', 'h', 'o', 'v', 'a', 'r', '.' > // pathovar.
         >,
         opt< space >
         >
@@ -109,53 +112,57 @@ namespace pegax {
       struct rankUninomial
         : seq<
           sor<
-            ::string< 's', 'e', 'c', 't' >,
-            ::string< 's', 'u', 'b', 's', 'e', 'c', 't' >,
-            ::string< 't', 'r', 'i', 'b' >,
-            ::string< 's', 'u', 'b', 't', 'r', 'i', 'b' >,
-            ::string< 's', 'u', 'b', 's', 'e', 'r' >,
-            ::string< 's', 'e', 'r' >,
-            ::string< 's', 'u', 'b', 'g', 'e', 'n' >,
-            ::string< 'f', 'a', 'm' >,
-            ::string< 's', 'u', 'b', 'f', 'a', 'm' >,
-            ::string< 's', 'u', 'p', 'e', 'r', 't', 'r', 'i', 'b' >
+            ::string< 's', 'e', 'c', 't' >, // sect
+            ::string< 's', 'u', 'b', 's', 'e', 'c', 't' >, //subsect
+            ::string< 't', 'r', 'i', 'b' >, // trib
+            ::string< 's', 'u', 'b', 't', 'r', 'i', 'b' >, // subtrib
+            ::string< 's', 'u', 'b', 's', 'e', 'r' >, // subser
+            ::string< 's', 'e', 'r' >, // ser
+            ::string< 's', 'u', 'b', 'g', 'e', 'n' >, //subgen
+            ::string< 'f', 'a', 'm' >, // fam
+            ::string< 's', 'u', 'b', 'f', 'a', 'm' >, // subfam
+            ::string< 's', 'u', 'p', 'e', 'r', 't', 'r', 'i', 'b' > // supertrib
           >,
-          opt< one< '.' >>
+          sor< space, one< '.' >>
         >
       {};
         
       struct approximation
         : sor< 
-          ::string< 's', 'p', '.', 'n', 'r', '.' >,
-          ::string< 's', 'p', '.', ' ', 'n', 'r', '.' >,
-          ::string< 's', 'p', '.', 'a', 'f', 'f', '.' >,
-          ::string< 's', 'p', '.', ' ', 'a', 'f', 'f', '.' >,
-          ::string< 'm', 'o', 'n', 's', 't', '.' >,
-          ::string< '?' >,
+          ::string< 's', 'p', '.', 'n', 'r', '.' >, // sp.nr.
+          ::string< 's', 'p', '.', ' ', 'n', 'r', '.' >, // sp. nr.
+          ::string< 's', 'p', '.', 'a', 'f', 'f', '.' >, // sp.aff.
+          ::string< 's', 'p', '.', ' ', 'a', 'f', 'f', '.' >, // sp. aff.
+          ::string< 'm', 'o', 'n', 's', 't', '.' >, // monst.
+          ::string< '?' >, // ?
           seq<
             sor< 
-              ::string< 's', 'p', 'p' >,
-              ::string< 'n', 'r' >,
-              ::string< 's', 'p' >,
-              ::string< 'a', 'f', 'f' >,
-              ::string< 's', 'p', 'e', 'c', 'i', 'e', 's' >
+              ::string< 's', 'p', 'p' >, // spp
+              ::string< 'n', 'r' >, // nr
+              ::string< 's', 'p' >, // sp
+              ::string< 'a', 'f', 'f' >, // aff
+              ::string< 's', 'p', 'e', 'c', 'i', 'e', 's' > // species
             >,
-            opt< one< '.' > >
+            sor<space, one<'.'>>
+            // opt< one< '.' > >
           >
         >
       {};
         
       struct comparison
-        : seq< ::string< 'c', 'f' >, opt< one< '.' > > 
+        : seq< ::string< 'c', 'f' >, opt< one< '.' > >  // cf.
         >
       {};
 
       struct rankOtherUncommon
-        : sor<
-          ::string< '*' >,
-          ::string< 'n', 'a', 't' >,
-          ::string< 'f', '.', 's', 'p' >,
-          ::string< 'm', 'u', 't', '.' >
+        : seq<
+          sor<
+            ::string< '*' >, // *
+            ::string< 'n', 'a', 't' >, // nat
+            ::string< 'f', '.', 's', 'p' >, // f.sp
+            ::string< 'm', 'u', 't', '.' > // mut.
+          >,
+          sor<space, one<'.'>>
         >
       {};
         
@@ -179,7 +186,8 @@ namespace pegax {
       {};
       
       struct txtany
-        : seq< opt< space >, plus< tao::TAOCPP_PEGTL_NAMESPACE::any > >
+        // : seq< opt< space >, plus< tao::TAOCPP_PEGTL_NAMESPACE::any > >
+        : seq< space, plus< tao::TAOCPP_PEGTL_NAMESPACE::any > >
       {};
         
     struct oror
@@ -196,12 +204,14 @@ namespace pegax {
   // grammar
   struct grammar
     : star< 
-        // opt< txtspacetxt >, opt< space >, 
-        txtspacetxt,
-        oror, 
-        // opt< space >, opt< txtany >, 
-        opt< txtany >,
-        eof >
+      // opt< txtspacetxt >, opt< space >, 
+      txtspacetxt,
+      sor< oror, seq< seq< authorname::author, space >, oror > >,
+      // opt< space >, opt< txtany >, 
+      // opt< txtany >,
+      txtany,
+      eof 
+    >
   {};
 
   // Class template for user-defined actions that does

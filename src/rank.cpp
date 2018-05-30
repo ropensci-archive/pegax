@@ -13,7 +13,8 @@ CharacterVector rank_names(CharacterVector x){
     std::string z;
     memory_input<> din(x[i], "moot");
     parse< pegax::rank::grammar, pegax::rank::action >( din, z );
-    y[i] = z;
+    std::string trimmed_z = trim_copy(z);
+    y[i] = trimmed_z;
   }
   return y;
   // memory_input<> din(x, "moot");

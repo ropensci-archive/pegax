@@ -29,6 +29,20 @@ namespace pegax {
       : plus< digit >
     {};
     
+    // for use in other methods to pull out authorities
+    struct author
+      : seq< 
+          opt< one< '(' > >, 
+          name3, 
+          opt< one< ',' > >, 
+          opt< space >, 
+          opt< numbers >, 
+          opt< sor< one< ')' >, one< '?' > > >,
+          eof
+      >
+    {};
+     
+    // grammar
     struct grammar
       : must< opt< one< '(' > >, name3, opt< one< ',' > >, opt< space >, opt< numbers >, opt< sor< one< ')' >, one< '?' > > >, eof >
     {};

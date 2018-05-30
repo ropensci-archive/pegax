@@ -61,48 +61,20 @@ namespace pegax {
     : must< name, softSpace, pegax::rank::approximation, softSpace, pegax::rank::approximation >
   {};
   
-  // grammar
-  // struct grammar 
-  //   : star<
-  //     // sor<
-  //       name,
-  //       seq< name, softSpace, epithet >,
-  //       // seq< name, softSpace, epithet, softSpace, infraname >,
-  //       // seq< name, softSpace, epithet, softSpace, pegax::rank::oror, softSpace, infraname>,
-  //       // seq< name, softSpace, pegax::rank::approximation >,
-  //       // seq< name, softSpace, pegax::rank::approximation, softSpace, infraname >,
-  //       // seq< name, softSpace, pegax::rank::approximation, softSpace, pegax::rank::approximation, softSpace, infraname >,
-  //       // seq< name, softSpace, pegax::rank::approximation, softSpace, pegax::rank::approximation >
-  //     // >,
-  //     eof
-  //   >{};
-  
-  // struct grammar
-  //   : star<
-  //     sor<
-  //       just_a_name,
-  //       genus_epithet,
-  //       genus_epithet_infra,
-  //       genus_epithet_rank_infra,
-  //       genus_approx,
-  //       genus_approx_name,
-  //       genus_name_approx_name,
-  //       genus_name_approx
-  //     >,
-  //     eof
-  //  > {};
-  
   struct grammar
     : star<
-      name,
-      opt< softSpace >,
-      epithet,
-      opt< softSpace >,
-      sor< pegax::rank::oror, pegax::rank::annotators >,
-      opt< softSpace >,
-      infraname,
+      sor<
+        just_a_name,
+        genus_epithet,
+        genus_epithet_infra,
+        genus_epithet_rank_infra,
+        genus_approx,
+        genus_approx_name,
+        genus_name_approx_name,
+        genus_name_approx
+      >,
       eof
-  > {};
+   > {};
 
   template< typename Rule >
   struct action

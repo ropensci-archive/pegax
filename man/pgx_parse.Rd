@@ -17,6 +17,7 @@ pgx_parse("Linnaeus")
 pgx_parse("(Linnaeus)")
 pgx_parse("Linnaeus 1789")
 pgx_parse("Helianthus annuus L.")
+pgx_parse("Helianthus annuus 1789")
 \dontrun{
 # needs a name
 pgx_parse("1789")

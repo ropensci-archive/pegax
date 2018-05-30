@@ -17,3 +17,20 @@ test_that("pgx_ranks accepts many inputs", {
   expect_is(aa, 'character')
   expect_equal(aa, c("var", "ssp", "forma"))
 })
+
+# using spec json
+test_that("pgx_ranks passes json spec" {
+  library(jsonolite)
+  json <- jsonlite::fromJSON("tests/testthat/rank_spec.json", FALSE)
+  json <- unlist(lapply(json, "[[", "entries"), FALSE)
+  for (i in seq_along(json)) {
+    cat(paste0("doing: ", i, " taxon: ", json[[i]]$name), sep = "\n")
+    expect_equal(pgx_ranks(json[[i]]$name), json[[i]]$rank_out)
+  }
+})
+
+for (i in seq_along(json)) {
+  cat("\n")
+  cat(paste0("doing: ", i, " taxon: ", json[[i]]$name), sep = "\n")
+  cat(pgx_ranks(json[[i]]$name), sep = "\n")
+}
