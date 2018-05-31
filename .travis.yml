@@ -7,7 +7,7 @@ r_github_packages:
   - jimhester/covr
 
 compiler:
-  - clang
+  - gcc
 
 env:
  global:
