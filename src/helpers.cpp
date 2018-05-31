@@ -29,7 +29,7 @@ std::string replace_all_symbols(std::string x){
 // };
 
 //[[Rcpp::export]]
-std::string replace_specific_symbols(std::string const& x){
+std::string replace_specific_symbols(std::string x){
   std::string output = x;
   output = std::regex_replace(output, std::regex("[><*{}&%$#@!|^]"), "");
   return output;

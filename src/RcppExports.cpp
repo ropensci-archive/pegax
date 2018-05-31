@@ -50,12 +50,12 @@ BEGIN_RCPP
 END_RCPP
 }
 // replace_specific_symbols
-std::string replace_specific_symbols(std::string const& x);
+std::string replace_specific_symbols(std::string x);
 RcppExport SEXP _pegax_replace_specific_symbols(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string const& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
     rcpp_result_gen = Rcpp::wrap(replace_specific_symbols(x));
     return rcpp_result_gen;
 END_RCPP
