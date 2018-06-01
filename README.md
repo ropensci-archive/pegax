@@ -9,6 +9,8 @@ pegax
 
 Taxonomy PEG (Parsing Expression Grammar) rules
 
+PEG work done on the C++ side in this package using [PEGTL](https://github.com/taocpp/PEGTL) via the [piton](https://github.com/Ironholds/piton) package.
+
 ## Example rules
 
 Capture any letter
